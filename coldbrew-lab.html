@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Configurateurs Cold Brew : recette Toddy, coût par verre et cartographie d'infusion." />
+  <title>Cold Brew Lab</title>
+  <style>
+    :root{--bg:#f7f5f1;--panel:#fff;--panel2:#f0ede7;--text:#1f1d19;--muted:#6d675f;--border:#ded8cf;--accent:#5f4636;--accentSoft:#ebe3dc;--series:#866851;--danger:#9c3434;--radius:16px;--shadow:0 10px 24px rgba(40,30,20,.06)}
+    @media(prefers-color-scheme:dark){:root{--bg:#171512;--panel:#211e1a;--panel2:#2b2722;--text:#f4efe8;--muted:#bbb2a7;--border:#403a33;--accent:#d0a27f;--accentSoft:#372d26;--series:#c59977;--danger:#ef8b8b;--shadow:none}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,input,select{font:inherit}button{color:inherit}.wrap{width:min(980px,calc(100% - 32px));margin:0 auto}.site-header{padding:34px 0 18px;border-bottom:1px solid var(--border)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;margin-bottom:10px}h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:8px}h3{margin-bottom:8px}.subtitle,.muted{color:var(--muted)}.small{font-size:.9rem}.eyebrow{margin-bottom:6px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.tab,.chip{border:1px solid var(--border);background:var(--panel);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.tab:hover,.chip:hover{border-color:var(--accent)}.tab.is-active,.chip.is-active{border-color:var(--accent);background:var(--accentSoft)}.main{padding:28px 0 48px}.section-heading{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:end;margin-bottom:18px}.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:18px}label{display:block;font-size:.9rem;font-weight:700;margin-bottom:6px}input[type=number],select{width:100%;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text)}input[type=range]{width:100%;accent-color:var(--accent)}.inline-field{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.inline-field input[type=number]{width:130px}.preset-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.metric{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;min-width:0}.metric.featured{border-color:var(--accent)}.metric span,.metric small{display:block;color:var(--muted)}.metric strong{display:block;font-size:1.35rem;margin:5px 0 2px;overflow-wrap:anywhere}.timeline{display:grid;gap:10px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;border:1px solid var(--border);background:var(--panel);border-radius:14px;padding:14px}.step-number{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--accentSoft);color:var(--accent);font-weight:900}.step p{margin-bottom:0}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.span-2{grid-column:span 2}.range-row{display:grid;grid-template-columns:1fr 80px;gap:14px;align-items:center}.comparison-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 10px}.comparison-grid strong{display:block;font-size:1.25rem;margin-top:4px}.equations p{margin:7px 0;color:var(--muted)}.equations summary{cursor:pointer;font-weight:800}.brew-head{display:flex;justify-content:space-between;gap:18px;align-items:start}.brew-head>strong{font-size:1.3rem;white-space:nowrap}.verdict{margin-top:16px;padding:14px;border-radius:12px;background:var(--panel2)}.bars{display:grid;gap:12px}.bar-line{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center}.bar-track{height:10px;background:var(--panel2);border-radius:999px;overflow:hidden}.bar-fill{height:100%;background:var(--series);border-radius:inherit}.validation{color:var(--danger);margin:8px 0 0;min-height:1.2em}.footer{padding:0 0 40px;color:var(--muted);font-size:.9rem}.note{padding:12px 14px;border-left:4px solid var(--accent);background:var(--panel2);border-radius:10px;margin:12px 0}
+    @media(max-width:720px){.section-heading,.form-grid,.metric-grid,.comparison-grid{grid-template-columns:1fr}.span-2{grid-column:auto}.bar-line{grid-template-columns:86px 1fr 46px;gap:8px}.brew-head{align-items:center}}
+    @media(max-width:420px){.wrap{width:min(100% - 22px,980px)}.site-header{padding-top:24px}.inline-field{align-items:stretch;flex-direction:column}.inline-field input[type=number]{width:100%}.range-row{grid-template-columns:1fr 68px}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Cold Brew Lab</p>
+    <h1>Configurateurs Toddy & Cold Brew</h1>
+    <p class="subtitle">Recette proportionnelle, coût réel et cartographie d’infusion.</p>
+    <nav class="tabs" aria-label="Configurateurs">
+      <button class="tab is-active" data-panel="recipe" type="button">Recette Toddy</button>
+      <button class="tab" data-panel="cost" type="button">Coût</button>
+      <button class="tab" data-panel="infusion" type="button">Infusion</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap main">
+  <section id="panel-recipe" class="panel" data-panel-content="recipe">
+    <div class="section-heading"><div><p class="eyebrow">Méthode 2 — Classique</p><h2>Simulateur de recette Toddy</h2></div><p class="muted">Base proportionnelle : 340 g de café pour 1 900 mL d’eau, soit ≈ 1:5,59.</p></div>
+    <div class="card">
+      <label for="recipeCoffee">Quantité de café</label>
+      <div class="preset-row">
+        <button type="button" class="chip recipe-preset" data-g="50">50 g</button><button type="button" class="chip recipe-preset" data-g="100">100 g</button><button type="button" class="chip recipe-preset" data-g="150">150 g</button><button type="button" class="chip recipe-preset" data-g="200">200 g</button><button type="button" class="chip recipe-preset" data-g="250">250 g</button><button type="button" class="chip recipe-preset" data-g="340">340 g</button>
+      </div>
+      <div class="inline-field"><input id="recipeCoffee" type="number" min="10" max="500" step="1" value="150"><span>g de café</span></div><p id="recipeValidation" class="validation"></p>
+    </div>
+    <div class="metric-grid"><div class="metric"><span>Café total</span><strong id="recipeCoffeeTotal">—</strong></div><div class="metric"><span>Eau totale</span><strong id="recipeWaterTotal">—</strong></div><div class="metric"><span>Ratio</span><strong>1 : 5,59</strong></div></div>
+    <div class="timeline">
+      <article class="step"><div class="step-number">1</div><div><h3>Préparer le Toddy</h3><p>Bouchon sous le récipient. Filtre en feutre humidifié et bien plaqué au fond.</p></div></article>
+      <article class="step"><div class="step-number">2</div><div><h3>Première eau</h3><p>Verser <strong id="recipeWater1">—</strong> d’eau.</p></div></article>
+      <article class="step"><div class="step-number">3</div><div><h3>Première moitié du café</h3><p>Ajouter <strong id="recipeCoffee1">—</strong> de café moulu grossièrement.</p></div></article>
+      <article class="step"><div class="step-number">4</div><div><h3>Deuxième eau</h3><p>Verser lentement <strong id="recipeWater2">—</strong> en cercles.</p><p class="muted small">Attendre 5 minutes sans remuer.</p></div></article>
+      <article class="step"><div class="step-number">5</div><div><h3>Deuxième moitié du café</h3><p>Ajouter <strong id="recipeCoffee2">—</strong> restants.</p></div></article>
+      <article class="step"><div class="step-number">6</div><div><h3>Dernière eau</h3><p>Verser <strong id="recipeWater3">—</strong>.</p><p class="muted small">Ne pas remuer ; humidifier seulement les zones sèches.</p></div></article>
+    </div>
+  </section>
+
+  <section id="panel-cost" class="panel" data-panel-content="cost" hidden>
+    <div class="section-heading"><div><p class="eyebrow">Économie réelle</p><h2>Coût du concentré et coût mensuel</h2></div><p class="muted">Valeurs par défaut : 250 g à 14 €, 130 g utilisés, 750 mL d’eau → 500 g de concentré.</p></div>
+    <div class="form-grid card">
+      <div><label for="packWeight">Poids du paquet (g)</label><input id="packWeight" type="number" min="1" step="1" value="250"></div>
+      <div><label for="packPrice">Prix du paquet (€)</label><input id="packPrice" type="number" min="0.01" step="0.01" value="14"></div>
+      <div><label for="batchCoffee">Grains utilisés (g)</label><input id="batchCoffee" type="number" min="1" step="1" value="130"></div>
+      <div><label for="waterIn">Eau versée (g ≈ mL)</label><input id="waterIn" type="number" min="1" step="1" value="750"></div>
+      <div><label for="concOut">Concentré récupéré (g)</label><input id="concOut" type="number" min="1" step="1" value="500"></div>
+      <div><label for="dose">Concentré par prise (g)</label><input id="dose" type="number" min="1" step="1" value="30"></div>
+      <div><label for="servings">Prises par jour</label><input id="servings" type="number" min="1" step="1" value="2"></div>
+      <div><label for="daysMonth">Jours par mois</label><input id="daysMonth" type="number" min="1" max="31" step="1" value="30"></div>
+    </div>
+    <div class="metric-grid">
+      <div class="metric"><span>Prix des grains</span><strong id="grainPrice">—</strong></div><div class="metric"><span>Coût du batch</span><strong id="batchCost">—</strong></div><div class="metric"><span>Rendement liquide</span><strong id="yieldPct">—</strong></div><div class="metric"><span>Coût / g concentré</span><strong id="costPerConc">—</strong></div><div class="metric"><span>Coût par prise</span><strong id="costServing">—</strong></div><div class="metric"><span>Coût par jour</span><strong id="costDay">—</strong></div><div class="metric"><span>Durée d’un batch</span><strong id="batchDays">—</strong></div><div class="metric"><span>Batches / mois</span><strong id="batchesMonth">—</strong></div><div class="metric"><span>Coût / mois</span><strong id="costMonth">—</strong></div>
+    </div>
+    <div class="card"><h3>Comparer avec une ancienne méthode</h3><div class="inline-field"><label for="oldCoffee">Grains consommés par jour :</label><input id="oldCoffee" type="number" min="0.1" step="0.1" value="15"><span>g/jour</span></div><div class="comparison-grid"><div><span class="muted small">Ancienne méthode / mois</span><strong id="oldMonth">—</strong></div><div><span class="muted small">Toddy / mois</span><strong id="newMonth2">—</strong></div><div><span class="muted small">Écart</span><strong id="difference">—</strong></div></div><p id="comparisonText" class="muted"></p><p id="costValidation" class="validation"></p></div>
+    <details class="card equations"><summary>Équations utilisées</summary><p>Prix/g = prix du paquet ÷ poids du paquet</p><p>Coût du batch = grains du batch × prix/g</p><p>Coût/g de concentré = coût du batch ÷ concentré récupéré</p><p>Coût/jour = coût/g × dose × prises/jour</p><p>Durée du batch = concentré récupéré ÷ consommation quotidienne</p><p>Coût mensuel = coût/jour × jours/mois</p></details>
+  </section>
+
+  <section id="panel-infusion" class="panel" data-panel-content="infusion" hidden>
+    <div class="section-heading"><div><p class="eyebrow">Modèle pratique</p><h2>Cartographie température × torréfaction × durée</h2></div><p class="muted">Guide sensoriel heuristique, pas une mesure de laboratoire.</p></div>
+    <div class="note">Le module sert à comparer des essais. Il ne peut pas prédire exactement le goût d’un café particulier à la minute près.</div>
+    <div class="form-grid card">
+      <div class="span-2"><label for="temp">Température de la pièce</label><div class="range-row"><input id="temp" type="range" min="17" max="30" step="0.5" value="21.5"><strong id="tempVal">21,5 °C</strong></div></div>
+      <div><label for="roast">Torréfaction</label><select id="roast"><option value="light">Claire</option><option value="ml" selected>Medium-light</option><option value="medium">Moyenne</option><option value="md">Moyenne-foncée</option><option value="dark">Foncée</option></select></div>
+      <div><label for="grind">Mouture</label><select id="grind"><option value="xc">Très grossière</option><option value="coarse" selected>Grossière / Toddy</option><option value="mc">Moyenne-grossière</option></select></div>
+      <div><label for="process">Traitement</label><select id="process"><option value="washed" selected>Lavé</option><option value="natural">Naturel</option><option value="honey">Honey</option><option value="anaerobic">Anaérobie / fermenté</option></select></div>
+      <div><label for="profile">Profil dominant</label><select id="profile"><option value="floral" selected>Floral / délicat</option><option value="fruit">Très fruité</option><option value="balanced">Équilibré</option><option value="choc">Chocolaté / noix</option></select></div>
+      <div><label for="infusionCoffee">Café (g)</label><input id="infusionCoffee" type="number" min="20" max="500" step="1" value="150"></div>
+      <div><label for="infusionWater">Eau (mL)</label><input id="infusionWater" type="number" min="100" max="3000" step="5" value="840"></div>
+    </div>
+    <div class="metric-grid"><div class="metric"><span>Déjà bien extrait vers</span><strong id="minTime">—</strong><small>profil plus léger et vif</small></div><div class="metric featured"><span>Cible conseillée</span><strong id="targetTime">—</strong><small id="windowTime">—</small></div><div class="metric"><span>Ratio eau : café</span><strong id="infusionRatio">—</strong><small id="ratioNote">—</small></div></div>
+    <div class="card"><div class="brew-head"><div><h3>Que donnera le café à cette durée ?</h3><p class="muted small">Déplace le curseur ou choisis une durée.</p></div><strong id="brewVal">12 h 00</strong></div><input id="brew" type="range" min="8" max="22" step="0.25" value="12"><div class="preset-row"><button type="button" class="chip time-btn" data-time="10">10 h</button><button type="button" class="chip time-btn" data-time="12">12 h</button><button type="button" class="chip time-btn" data-time="13">13 h</button><button type="button" class="chip time-btn" data-time="14">14 h</button><button type="button" class="chip time-btn" data-time="16">16 h</button></div><div id="verdict" class="verdict"></div></div>
+    <div class="card"><h3>Profil sensoriel estimé</h3><div id="bars" class="bars"></div></div>
+  </section>
+</main>
+<footer class="wrap footer"><p>Cold Brew Lab — page statique autonome, sans dépendance externe.</p></footer>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id), fmt=(n,d=0)=>Number(n).toLocaleString("fr-FR",{maximumFractionDigits:d}), money=new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR",minimumFractionDigits:2,maximumFractionDigits:2}), clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const tabs=[...document.querySelectorAll('.tab')], panels=[...document.querySelectorAll('[data-panel-content]')];
+function showPanel(name,hash=true){tabs.forEach(t=>t.classList.toggle('is-active',t.dataset.panel===name));panels.forEach(p=>{const a=p.dataset.panelContent===name;p.hidden=!a});if(hash)history.replaceState(null,'','#'+name)}
+tabs.forEach(t=>t.addEventListener('click',()=>showPanel(t.dataset.panel)));const h=location.hash.replace('#','');if(['recipe','cost','infusion'].includes(h))showPanel(h,false);
+
+// 1) Recette Toddy
+const T={coffee:340,waterTotal:1900,water1:250,water2:700,water3:950}, rp=[...document.querySelectorAll('.recipe-preset')];
+function updateRecipe(v=$('recipeCoffee').value){let c=Number(v);if(!Number.isFinite(c))c=150;if(c<10){c=10;$('recipeValidation').textContent='Minimum fixé à 10 g.'}else if(c>500){c=500;$('recipeValidation').textContent='Maximum fixé à 500 g.'}else $('recipeValidation').textContent='';$('recipeCoffee').value=Math.round(c);const s=c/T.coffee;$('recipeCoffeeTotal').textContent=fmt(c)+' g';$('recipeWaterTotal').textContent=fmt(T.waterTotal*s)+' mL';$('recipeCoffee1').textContent=fmt(c/2)+' g';$('recipeCoffee2').textContent=fmt(c/2)+' g';$('recipeWater1').textContent=fmt(T.water1*s)+' mL';$('recipeWater2').textContent=fmt(T.water2*s)+' mL';$('recipeWater3').textContent=fmt(T.water3*s)+' mL';rp.forEach(b=>b.classList.toggle('is-active',Number(b.dataset.g)===Math.round(c)))}
+$('recipeCoffee').addEventListener('input',()=>updateRecipe());rp.forEach(b=>b.addEventListener('click',()=>updateRecipe(b.dataset.g)));updateRecipe();
+
+// 2) Coût
+const cids=['packWeight','packPrice','batchCoffee','waterIn','concOut','dose','servings','daysMonth','oldCoffee'];
+function pos(id){const v=Number($(id).value);return Number.isFinite(v)&&v>0?v:null}
+function updateCost(){const v=Object.fromEntries(cids.map(id=>[id,pos(id)]));if(Object.values(v).some(x=>x===null)){$('costValidation').textContent='Toutes les valeurs doivent être supérieures à zéro.';return}$('costValidation').textContent='';const gu=v.packPrice/v.packWeight, bc=v.batchCoffee*gu, y=v.concOut/v.waterIn*100, cpc=bc/v.concOut, dc=v.dose*v.servings, cs=cpc*v.dose, cd=cpc*dc, bd=v.concOut/dc, bm=v.daysMonth/bd, cm=cd*v.daysMonth, bed=v.batchCoffee*dc/v.concOut, om=v.oldCoffee*gu*v.daysMonth, diff=cm-om, dp=om>0?diff/om*100:0, packDays=v.packWeight/bed;$('grainPrice').textContent=money.format(gu)+'/g';$('batchCost').textContent=money.format(bc);$('yieldPct').textContent=fmt(y,1)+' %';$('costPerConc').textContent=fmt(cpc*100,3)+' c€/g';$('costServing').textContent=money.format(cs);$('costDay').textContent=money.format(cd);$('batchDays').textContent=fmt(bd,1)+' jours';$('batchesMonth').textContent=fmt(bm,2);$('costMonth').textContent=money.format(cm);$('oldMonth').textContent=money.format(om);$('newMonth2').textContent=money.format(cm);$('difference').textContent=(diff>=0?'+':'−')+money.format(Math.abs(diff))+' ('+(dp>=0?'+':'−')+fmt(Math.abs(dp),1)+' %)';$('comparisonText').textContent='Avec ces paramètres, le Toddy correspond à environ '+fmt(bed,1)+' g de grains par jour. Un paquet de '+fmt(v.packWeight)+' g dure environ '+fmt(packDays,1)+' jours.'}
+cids.forEach(id=>$(id).addEventListener('input',updateCost));updateCost();
+
+// 3) Infusion — modèle heuristique
+const rf={light:1.08,ml:1,medium:.93,md:.86,dark:.80}, gf={xc:1.10,coarse:1,mc:.90}, rb={light:-8,ml:0,medium:8,md:18,dark:30}, rfl={light:10,ml:4,medium:-5,md:-15,dark:-28};
+function ftime(x){x=clamp(x,0,30);let h=Math.floor(x),m=Math.round(((x-h)*60)/5)*5;if(m===60){h++;m=0}return h+' h '+String(m).padStart(2,'0')}
+function target(){let x=12.5*Math.exp(-.05*(Number($('temp').value)-22));x*=rf[$('roast').value]*gf[$('grind').value];return clamp(x,8,20)}
+function stage(x){if(x<.72)return['Très jeune','Très léger, notes hautes dominantes, avec un risque de tasse mince, végétale ou insuffisamment développée.'];if(x<.88)return['Extraction légère','Profil très propre et vif : fleurs et fruit au premier plan, corps léger, douceur encore modérée.'];if(x<1.08)return['Zone aromatique optimale','Meilleur compromis attendu entre fruit, douceur, netteté et corps.'];if(x<1.22)return['Plus rond et dense','Davantage de corps et de douceur perçue, arômes plus fondus, légèrement moins de précision florale.'];if(x<1.38)return['Extraction poussée','Corps marqué et finale longue ; les notes florales commencent à s’aplatir et l’amertume peut progresser.'];return['Très long','Peu de gain utile attendu ; risque croissant de notes boisées, terreuses ou amères et d’une moindre définition.']}
+function sensory(time,t){const x=time/t,roast=$('roast').value,proc=$('process').value,prof=$('profile').value;let floral=88-70*Math.max(0,x-1)-45*Math.max(0,.82-x)+rfl[roast], fruit=78-55*Math.max(0,x-1.08)-30*Math.max(0,.78-x), sweet=82-45*Math.abs(x-1.03), body=45+48*clamp((x-.70)/.60,0,1), bitter=12+45*clamp((x-1)/.55,0,1)+rb[roast], clarity=92-65*Math.max(0,x-1.02)-25*Math.max(0,.72-x);if(proc==='natural'){fruit+=10;body+=5;clarity-=6}if(proc==='honey'){sweet+=8;body+=5}if(proc==='anaerobic'){fruit+=15;body+=4;clarity-=8}if(prof==='floral'){floral+=10;clarity+=5;body-=4}if(prof==='fruit'){fruit+=12;sweet+=5}if(prof==='balanced'){body+=3;sweet+=3}if(prof==='choc'){body+=10;bitter+=5;floral-=15}return{Floral:clamp(floral,5,100),Fruité:clamp(fruit,5,100),Douceur:clamp(sweet,5,100),Corps:clamp(body,5,100),Amertume:clamp(bitter,3,100),Netteté:clamp(clarity,5,100)}}
+function updateInf(){const temp=Number($('temp').value), c=Math.max(1,Number($('infusionCoffee').value)||150), w=Math.max(1,Number($('infusionWater').value)||840), time=Number($('brew').value), t=target();$('tempVal').textContent=fmt(temp,1)+' °C';$('minTime').textContent=ftime(Math.max(8,t*.76));$('targetTime').textContent=ftime(t);$('windowTime').textContent='zone conseillée : '+ftime(t*.92)+' – '+ftime(t*1.08);const r=w/c;$('infusionRatio').textContent='1 : '+fmt(r,2);$('ratioNote').textContent=r<4.8?'Très concentré : corps et intensité élevés.':r<6.3?'Zone concentré Toddy.':r<9?'Concentré plus léger.':'Proche d’un cold brew prêt à boire.';$('brewVal').textContent=ftime(time);const [ti,de]=stage(time/t);$('verdict').innerHTML='<strong>'+ti+'</strong><p class="muted small" style="margin:6px 0 0">'+de+'</p>';const vals=sensory(time,t);$('bars').innerHTML=Object.entries(vals).map(([k,v])=>'<div class="bar-line"><span>'+k+'</span><div class="bar-track"><div class="bar-fill" style="width:'+v+'%"></div></div><strong>'+Math.round(v)+'/100</strong></div>').join('');document.querySelectorAll('.time-btn').forEach(b=>b.classList.toggle('is-active',Math.abs(Number(b.dataset.time)-time)<.01))}
+['temp','roast','grind','process','profile','infusionCoffee','infusionWater','brew'].forEach(id=>$(id).addEventListener('input',updateInf));document.querySelectorAll('.time-btn').forEach(b=>b.addEventListener('click',()=>{$('brew').value=b.dataset.time;updateInf()}));updateInf();
+})();
+</script>
+</body>
+</html>
